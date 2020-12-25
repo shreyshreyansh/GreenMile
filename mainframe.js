@@ -92,8 +92,8 @@ function initMap() {
 
   function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 
-    var second = new google.maps.LatLng(43.041537, -76.119375);
-    var first = new google.maps.LatLng(43.037556, -76.119014);
+    var second = new google.maps.LatLng(43.037556, -76.119014);
+    var first = new google.maps.LatLng(43.041537, -76.119375);
     const waypts = [{location: first, stopover: false},
         {location: second, stopover: false}];
         
@@ -123,9 +123,17 @@ function initMap() {
           console.log(response);
           const route = response.routes[0];
           const summaryPanel = document.getElementById("directions-panel");
-          const direction = document.getElementById("direction-bar");
           for (let i = 0; i < route.legs[0].steps.length; i++) {
-            summaryPanel.innerHTML +="<div id='direction-bar' class='direction'>"+ route.legs[0].steps[i].instructions + "</div>";
+            summaryPanel.innerHTML +=
+            "<div class='direction'>"+
+            "<div class='direction-left col-xs-8'>"+ 
+            route.legs[0].steps[i].instructions +
+            "</div>"+
+            "<div class='direction-right col-xs-3'>"+
+            route.legs[0].steps[i].distance.text+"<br/>"+
+            route.legs[0].steps[i].duration.text+
+            "</div>"+
+            "</div>";
           }
         } else {
           window.alert("Directions request failed due to " + status);

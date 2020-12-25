@@ -21,8 +21,13 @@ body {
   background-color: #2c7c64;
   color: #fff;
   overflow-y: scroll;
-  overflow-y: hidden;
   /* border: 2px solid black; */
+}
+
+.left-panel-head {
+  font-weight: 700;
+  padding-bottom: 5%;
+  border-bottom: 2px solid #fff;
 }
 
 #right-panel {
@@ -39,10 +44,10 @@ body {
 .direction {
   color: #fff;
   margin-bottom: 5%;
-  margin-top: 5%;
+  margin-top: 6%;
   padding-bottom: 5%;
-  width: 80%;
   border-bottom: 2px solid #fff;
+  height: 70px;
 }
 
 /* .brandHead {
