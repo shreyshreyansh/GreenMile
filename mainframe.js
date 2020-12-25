@@ -123,9 +123,9 @@ function initMap() {
           console.log(response);
           const route = response.routes[0];
           const summaryPanel = document.getElementById("directions-panel");
-          summaryPanel.innerHTML = "";
+          const direction = document.getElementById("direction-bar");
           for (let i = 0; i < route.legs[0].steps.length; i++) {
-            summaryPanel.innerHTML += route.legs[0].steps[i].instructions + "<br>";
+            summaryPanel.innerHTML +="<div id='direction-bar' class='direction'>"+ route.legs[0].steps[i].instructions + "</div>";
           }
         } else {
           window.alert("Directions request failed due to " + status);

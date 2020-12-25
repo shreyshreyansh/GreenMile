@@ -21,6 +21,7 @@ body {
   background-color: #2c7c64;
   color: #fff;
   overflow-y: scroll;
+  overflow-y: hidden;
   /* border: 2px solid black; */
 }
 
@@ -32,7 +33,16 @@ body {
 }
 
 #directions-panel {
-  font-size: 1.5rem;
+  font-size: 2rem;
+}
+
+.direction {
+  color: #fff;
+  margin-bottom: 5%;
+  margin-top: 5%;
+  padding-bottom: 5%;
+  width: 80%;
+  border-bottom: 2px solid #fff;
 }
 
 /* .brandHead {
