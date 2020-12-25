@@ -47,8 +47,10 @@ function initMap() {
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer();
     const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 6,
-    center: { lat: 41.85, lng: -87.65 },
+        mapTypeControl: false,
+        zoom: 6,
+        streetViewControl: false,
+        center: { lat: 41.85, lng: -87.65 }
   });
   const uluru = { lat: 23.4088259, lng: 85.31267419999999  };
               const contentString = '<div id="content">' +
@@ -76,7 +78,7 @@ function initMap() {
                 content: contentString,
               });
               const marker = new google.maps.Marker({
-                position: { lat: 23.402157, lng: 85.314976  },
+                position: { lat: 43.041537, lng: -76.119375  },
                 map,
                 icon: "imgSrc/paper-bucket.png",
                 title: "Uluru (Ayers Rock)",
@@ -90,8 +92,8 @@ function initMap() {
 
   function calculateAndDisplayRoute(directionsService, directionsRenderer) {
 
-    var first = new google.maps.LatLng(23.402157, 85.314976);
-    var second = new google.maps.LatLng(23.418845, 85.314570);
+    var second = new google.maps.LatLng(43.041537, -76.119375);
+    var first = new google.maps.LatLng(43.037556, -76.119014);
     const waypts = [{location: first, stopover: false},
         {location: second, stopover: false}];
         
@@ -108,10 +110,11 @@ function initMap() {
     // }
     directionsService.route(
       {
-        origin: new google.maps.LatLng(23.422157, 85.314976),
-        destination: new google.maps.LatLng(23.384191, 85.315600),
-        waypoints: waypts,
+        origin: new google.maps.LatLng(43.046919, -76.130824),
+        destination: new google.maps.LatLng(43.037148, -76.111857),
         optimizeWaypoints: true,
+        waypoints: waypts,
+        
         travelMode: google.maps.TravelMode.DRIVING,
       },
       (response, status) => {
@@ -121,15 +124,8 @@ function initMap() {
           const route = response.routes[0];
           const summaryPanel = document.getElementById("directions-panel");
           summaryPanel.innerHTML = "";
-  
-          // For each route, display summary information.
-          for (let i = 0; i < route.legs.length; i++) {
-            const routeSegment = i + 1;
-            summaryPanel.innerHTML +=
-              "<b>Route Segment: " + routeSegment + "</b><br>";
-            summaryPanel.innerHTML += route.legs[i].start_address + " to ";
-            summaryPanel.innerHTML += route.legs[i].end_address + "<br>";
-            summaryPanel.innerHTML += route.legs[i].distance.text + "<br><br>";
+          for (let i = 0; i < route.legs[0].steps.length; i++) {
+            summaryPanel.innerHTML += route.legs[0].steps[i].instructions + "<br>";
           }
         } else {
           window.alert("Directions request failed due to " + status);
