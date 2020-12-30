@@ -1,50 +1,41 @@
-// Function for the slide-up animation
-(function($) {
-    $.fn.visible = function(partial) {
-      
-        var $t            = $(this),
-            $w            = $(window),
-            viewTop       = $w.scrollTop(),
-            viewBottom    = viewTop + $w.height(),
-            _top          = $t.offset().top,
-            _bottom       = _top + $t.height(),
-            compareTop    = partial === true ? _bottom : _top,
-            compareBottom = partial === true ? _top : _bottom;
-      
-      return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
-  
-    };
-  })(jQuery);
-  var win = $(window);
-  var allMods = $(".module");
-  allMods.each(function(i, el) {
-    var el = $(el);
-    if (el.visible(true)) {
-      el.addClass("already-visible"); 
-    } 
-  });
-  win.scroll(function(event) {
-    allMods.each(function(i, el) {
-      var el = $(el);
-      if (el.visible(true)) {
-        el.addClass("come-in"); 
-      } 
+const express = require("express");
+const mongoose = require('mongoose');
+const app = express();
+require('dotenv').config();
+app.use(express.static("public"));
+mongoose.connect("mongodb://localhost:27017/arpDB", { useNewUrlParser: true ,  useUnifiedTopology: true });
+
+const dataSchema = new mongoose.Schema({
+    name : String, 
+    description : String
+});
+
+const Data = mongoose.model("data", dataSchema);
+app.get("/", function(req, res){
+    res.sendFile(__dirname + "/landPage.html");
+});
+
+app.get("/data", function(req, res){
+    Data.find(function(err, items){
+        if(err)
+        console.log(err);
+        else
+        res.send(items);
     });
-  });
+})
 
-
-var btn = $('#button');
-
-$(window).scroll(function() {
-  if ($(window).scrollTop() > 300) {
-    btn.addClass('show');
-  } else {
-    btn.removeClass('show');
-  }
+app.get("/signup", function(req, res){
+    res.sendFile(__dirname + "/signup.html");
 });
 
-btn.on('click', function(e) {
-  e.preventDefault();
-  $('html, body').animate({scrollTop:0}, '300');
+app.get("/signin", function(req, res){
+    res.sendFile(__dirname + "/signin.html");
 });
 
+app.get("/map", function(req, res){
+    res.sendFile(__dirname + "/map.html");
+});
+
+app.listen(3000, function(){
+    console.log("Server is up and running");
+});

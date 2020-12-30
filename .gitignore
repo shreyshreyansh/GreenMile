@@ -1,3 +1,7 @@
 vidSrc/
 test/
 imgSrc/test.jpg
+node_modules
+test
+.env
+

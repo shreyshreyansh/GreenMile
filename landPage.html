@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Green Mile</title>
+    <link rel="icon" href="design/Logo/favicon.png" type="image/x-icon"> 
+    <!-- Metalink -->
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- External Css -->
+    <link rel="stylesheet" type="text/css" href="landPage.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">   
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+    
+</head>
+
+    <body>
+        <a id="button"></a>
+        <!-- For the navbar at the top -->
+        <div class="topnav">
+            <img class="brandLogo" src="design\Logo\logo_transparent.png"/>
+            <h1 class="brandName">GREEN MILE</h1>
+            <button id="myBtn" class="signUp">Log-in</button>
+            <a href="#pwfrn">About</a>
+        </div>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+            
+            <div class="col-xs-7 rightCard">
+                    <img class="brandLogo" src="design\Logo\logo_transparent_green.png"/>
+                <div>
+                    <h1 class="rightCardHead">Sign in to Green Mile</h1>
+                    <form>
+                        <div class="formOuterBox">
+                            <label class="icon" for="email"><i class="fas fa-envelope"></i></label>
+                            <input type="text" name="email" class="formInnerBox" placeholder="Email" required/>
+                        </div>
+                        <div class="formOuterBox">
+                            <label class="icon" for="password"><i class="fas fa-unlock-alt"></i></label>
+                            <input type="password" name="password" class="formInnerBox" placeholder="Password" required/>
+                        </div>
+                    </form>
+                    <button class="rightCardButton">SIGN IN</button>
+                </div>
+            </div>
+            <div class="col-xs-5 leftCard">
+                <span class="close">&times;</span>
+            </div>
+            </div>
+        
+        </div>
+
+        <!-- Background video heading -->
+        <div class="videoHeader">
+        <h1>DELIVERING A SMART WAY TO MANAGE YOUR WASTE</h1>
+        <a href="map" target="_blank" class="mapButton">Map</a>
+        </div>
+
+        <!-- Background Video -->
+        <video id="videoBG" poster="imgSrc/VideoBG.png" autoplay muted loop>
+            <source src="vidSrc/Video.mp4" type="video/mp4">
+        </video>
+
+        <!-- Problems we face right now (pwfrn) -->
+        <div id="pwfrn" class="module container-fluid">
+            <div class="module container col-xs-5">
+                <h1 style="font-size: 5rem;">Problems we face right now</h1>
+                <img class="module"src="imgSrc/garbage-men.png"/>
+            </div>
+            <div class="module firstContainerRight col-xs-5">
+                <p class="discription">With rapid increase in population, the issues
+                    related to sanitation with respect to garbage management
+                    are degrading immensely. It creates unhygienic
+                    conditions for the citizens in the nearby surrounding,
+                    leading to the spread of infectious diseases and illness.<br/>
+                    &nbsp; &emsp; 
+                    Nowadays, garbage issues have become a serious thing in 
+                    maintaining the cleanliness of the city. Many of the city areas 
+                    are still without public garbage bins so the garbage is thrown at 
+                    the roadside or at the corners in the locality, which creates 
+                    ugliness at the corners. Worldwide interest in Smart Cities has aggrandized,
+                    fostered by the need to find effective remedies to the
+                    major challenges foreseen for the next years. As one of
+                    the application of Smart City, Waste Management in a
+                    city is a formidable challenge faced by the public
+                    administrations.<br/>
+                    &nbsp; &emsp;
+                    With the proliferation of population, the scenario of
+                    cleanliness with respect to waste management has become
+                    crucial. Waste management includes planning, collection,
+                    transport, treatment, recycle and disposal of waste
+                    together with monitoring and regulation. The existing
+                    waste management system, where the garbage is collected
+                    from the streets, houses and other establishments on
+                    quotidian basis, is not able to effectively manage the
+                    waste generated.</p>
+            </div>
+        </div>
+
+        <!-- Who needs this technology? (wntt) -->
+        <div id="wntt" class="module container-fluid secondContainer">
+            <div class="module secondContainerLeft col-xs-5">
+                <h1>District administrations</h1>
+                <p class="discription">Interested in controlling the process of waste collection, 
+                    checking quality of service (all waste collected, all in time, 
+                    waste collected cleanly, waste transported to special places), 
+                    quick and legal ways for solving disputes and problems.</p>
+                <h1>Municipalities</h1>
+                <p class="discription">Deploy and maintain smart city infrastructure like capacity sensors 
+                    in waste bins and wireless networks for data transferring.</p>
+                <h1>Waste trucks owning companies</h1>
+                <p class="discription">Need platform for organizing and optimization of their business 
+                    process in general without serious investments in developing, 
+                    deploying and supporting their own system.</p>
+                <h1>Waste truck drivers</h1>
+                <p class="discription">Need navigation system for fulfilling their tasks. Another issue 
+                    is reporting problems and passing them to the operators in the 
+                    office instead of thinking how to solve the problem, this can 
+                    sufficiently save time of a driver and vehicle. Drivers also need 
+                    evidence that their work was done correctly and cleanly.</p>
+            </div>
+            <div class="module secondContainerRight container col-xs-5">
+                <h1 style="font-size: 5rem;">Who needs this technology?</h1>
+                <img class=" secondContainerRightImg" src="imgSrc/recycleImg.png"/>
+            </div>
+        </div>
+
+        <!-- About the technology (att) -->
+        <div id="att" class="module container-fluid">
+            <div class="module container col-xs-6">
+                <h1 style="font-size: 5rem;">About the technology</h1>
+                <img class=" thirdContainerLeftImg1"src="imgSrc/appOverview.png"/>
+                <img class=" thirdContainerLeftImg2"src="imgSrc/unoptimizedRoute.png"/>
+                <img class=" thirdContainerLeftImg2"src="imgSrc/optimizedRoute.png"/>
+            </div>
+            <div class="module firstContainerRight col-xs-4">
+                <p class="discription">
+                    To avoid the above problem, IoT based “Smart Waste
+                    Management” is the best and trending solution. In the
+                    proposed system, public dustbins will be provided with
+                    embedded device which helps in real time monitoring of
+                    level of garbage in garbage bins. The sensors being placed at the
+                    topmost level in the bin, sense the level of the garbage in
+                    that bin. The data regarding the garbage levels will be used 
+                    to provide optimized route for garbage collecting vans, 
+                    which will reduce cost associated with fuel.<br/>
+                    &nbsp; &emsp; 
+                    Through this web app a normal layman can also see the levels of the 
+                    dustbin around his/her area and the when was last time garbage was collected
+                    from that bin and who was responsible for collecting that garbage. 
+                    This will help a layman to keep a check on municipality.  
+                </p>
+            </div>
+        </div>
+        
+        <div id="att" class="module container-fluid" style="width: 100%; background-color: #2c7c64;">
+            <div class="container col-xs-4" style="color: white; font-weight: 500;">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam.<br/>
+                    (+91) 72 9609 1010 <br/>
+                    Excepteur sint occaecat cupidatat non proident, sunt in 
+                    culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+                <p>&copy; Copyright-Green Mile</p>
+            </div>
+            <div class="col-xs-6" style="float: right;">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-linkedin"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
+        </div>
+        <!-- Javascript -->
+    <script src="landPage.js"></script>
+    </body>
+    
+        
+</html>
