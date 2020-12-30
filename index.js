@@ -3,14 +3,25 @@ const mongoose = require('mongoose');
 const app = express();
 require('dotenv').config();
 app.use(express.static("public"));
-mongoose.connect("mongodb://localhost:27017/arpDB", { useNewUrlParser: true ,  useUnifiedTopology: true });
+mongoose.connect("mongodb://localhost:27017/greenmileDB", { useNewUrlParser: true ,  useUnifiedTopology: true });
 
 const dataSchema = new mongoose.Schema({
-    name : String, 
-    description : String
+    _dustbinID : String,
+    driverID: String,
+    driverName : String,
+    driverPhoneNo : Number,
+    driverLisenceNo : Number,
+    driverPhotoLink : String,
+    driverMunipalHeadName : String,
+    driverMunipalHeadPhoneNo : Number,
+    lat : Number, 
+    lng : Number,
+    lastPickup : Date,
+    percentFilled : Number,
+    graphLink : String
 });
 
-const Data = mongoose.model("data", dataSchema);
+const Data = mongoose.model("dustbin", dataSchema);
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/landPage.html");
 });

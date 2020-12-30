@@ -84,3 +84,10 @@ div a:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+.dustbinInfo {
+  font-weight: 700;
+  width: 40%;
+  margin-left: 10%;
+  display: inline-block;
+}
