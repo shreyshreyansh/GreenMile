@@ -53,7 +53,6 @@ function initMap() {
          var data = JSON.parse(data.responseText);
         
         for (var i = 0; i < data.length; i++) {
-          console.log(data[i]);
           var contentString = '<div id="container">' +
           '<div id="upperContainer">' +
           '<p class="dustbinInfo">Dustbin Id : '+ data[i]._dustbinID + '</p>'+
