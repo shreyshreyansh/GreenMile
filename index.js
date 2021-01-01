@@ -7,6 +7,7 @@ require('dotenv').config();
 app.use(express.static("public"));
 mongoose.connect("mongodb://localhost:27017/greenmileDB", { useNewUrlParser: true ,  useUnifiedTopology: true });
 
+var activeUserID;
 const dustbinSchema = mongoose.Schema({
     _dustbinID : String,
     driverID: String,
@@ -34,6 +35,18 @@ const driverLoginSchema =  mongoose.Schema({
 
 const driverLoginData = mongoose.model("driverLogin", driverLoginSchema);
 
+const driverInfoSchema = mongoose.Schema({
+    driverID : String,
+    name : String,
+    email : String,
+    phoneNo : Number,
+    head : String,
+    lisenceNo : Number,
+    dustbin : Array
+});
+
+const driverInfoData = mongoose.model("driverInfo", driverInfoSchema);
+
 app.get("/", function(req, res){
     res.sendFile(__dirname + "/landPage.html");
 });
@@ -60,6 +73,17 @@ app.get("/mainframe", function(req, res){
     res.sendFile(__dirname + "/mainframe.html");
 })
 
+app.get("/activeUserData", function(req, res){
+    console.log(driverInfoData.collection.collectionName);
+    driverInfoData.findOne({ driverID : activeUserID }, function(err, doc){
+        if(err)
+            console.log(err);
+        else{
+            res.send(doc);
+        }
+    });
+})
+
 app.post("/", function(req, res){
     console.log(driverLoginData.collection.collectionName);
     driverLoginData.findOne({ _driverID: req.body.userID }, function (err, docs) { 
@@ -67,8 +91,10 @@ app.post("/", function(req, res){
             console.log(err); 
         } 
         else{ 
-            if(docs.email===req.body.email && docs.password===req.body.password)
-            res.redirect("/mainframe");
+            if(docs.email===req.body.email && docs.password===req.body.password){
+                activeUserID = req.body.userID;
+                res.redirect("/mainframe");
+            }
             else
             console.log("NOT FOUND");
         } 

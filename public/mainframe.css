@@ -95,8 +95,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  background-image: url("https://media.istockphoto.com/photos/portrait-of-smiling-handsome-man-in-blue-tshirt-standing-with-crossed-picture-id1045886560?k=6&m=1045886560&s=612x612&w=0&h=hXrxai1QKrfdqWdORI4TZ-M0ceCVakt4o6532vHaS3I=");
-
+  background-image: url("https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png");
   border-radius: 50%;
   border: 2px solid #2c7c64;
 }
@@ -114,8 +113,13 @@ body {
 }
 
 .dropdown {
+  width: 100%;
   position: relative;
   display: inline-block;
+}
+
+.downArrow {
+  margin-left: 2%;
 }
 
 .dropdown-content {

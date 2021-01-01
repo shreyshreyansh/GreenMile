@@ -1,3 +1,21 @@
+function makeRequest(url, callback) {
+  var request;
+  if (window.XMLHttpRequest) {
+  request = new XMLHttpRequest(); // IE7+, Firefox, Chrome, Opera, Safari
+  } else {
+  request = new ActiveXObject("Microsoft.XMLHTTP"); // IE6, IE5
+  }
+  request.onreadystatechange = function() {
+  if (request.readyState == 4 && request.status == 200) {
+  callback(request);
+  }
+  }
+  request.open("GET", url, true);
+  request.send();
+}
+
+
+
 function initMap() {
   let x = 40.52, y = 34.34;
   var options = {
@@ -14,6 +32,13 @@ function initMap() {
     console.log(`Latitude : ${crd.latitude}`);
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
+
+    makeRequest('/activeUserData', function(data) {
+      var data = JSON.parse(data.responseText);
+      console.log(data);
+      document.getElementById("loginName").prepend(data.name);
+      document.getElementById("loginImg").style.backgroundImage = "url(" + data.driverPhotoLink +")";
+    });
 
     const directionsService = new google.maps.DirectionsService();
     const directionsRenderer = new google.maps.DirectionsRenderer();
