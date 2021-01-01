@@ -13,6 +13,8 @@ function makeRequest(url, callback) {
   request.open("GET", url, true);
   request.send();
 }
+
+
 function initMap() {
   
     let x = 40.52, y = 34.34;
@@ -100,19 +102,12 @@ function initMap() {
         }
         
       }
-        });
-      
-      
-      
-  
+      });
       directionsRenderer.setMap(map);
     }
-   
     function error(err) {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
-    
     navigator.geolocation.getCurrentPosition(success, error, options);     
-  
 }
   

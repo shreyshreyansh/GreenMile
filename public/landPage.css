@@ -400,3 +400,33 @@ button {
   border: 2px solid #fff;
   border-radius: 5rem;
 }
+
+.formOuterBox {
+  background-color: #f7f7f7;
+  width: 60%;
+  margin-left: 22%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  height: 50px;
+}
+
+.formInnerBox {
+  border: 0;
+  background-color: #f7f7f7;
+  height: 50px;
+  width: 80%;
+}
+
+.icon {
+  margin-left: 6%;
+  margin-right: 6%;
+}
+
+.iconContainer a {
+  text-decoration: none;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}

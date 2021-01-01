@@ -39,7 +39,11 @@
                     <img class="brandLogo" src="design\Logo\logo_transparent_green.png"/>
                 <div>
                     <h1 class="rightCardHead">Sign in to Green Mile</h1>
-                    <form>
+                    <form action="/" method="POST">
+                        <div class="formOuterBox">
+                            <label class="icon" for="userID"><i class="fas fa-user"></i></label>
+                            <input type="text" name="userID" class="formInnerBox" placeholder="User ID" required/>
+                        </div>
                         <div class="formOuterBox">
                             <label class="icon" for="email"><i class="fas fa-envelope"></i></label>
                             <input type="text" name="email" class="formInnerBox" placeholder="Email" required/>
@@ -48,8 +52,9 @@
                             <label class="icon" for="password"><i class="fas fa-unlock-alt"></i></label>
                             <input type="password" name="password" class="formInnerBox" placeholder="Password" required/>
                         </div>
+                        <button type="submit" class="rightCardButton">SIGN IN</button>
                     </form>
-                    <button class="rightCardButton">SIGN IN</button>
+                    
                 </div>
             </div>
             <div class="col-xs-5 leftCard">
