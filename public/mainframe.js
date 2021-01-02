@@ -38,17 +38,28 @@ function initMap() {
       console.log(data);
       document.getElementById("loginName").prepend(data.name);
       document.getElementById("loginImg").style.backgroundImage = "url(" + data.driverPhotoLink +")";
-      
+      var noPoi = [
+        {
+            featureType: "poi",
+            stylers: [
+              { visibility: "off" }
+            ]   
+          }
+        ];
       const map = new google.maps.Map(document.getElementById("map"), {
         mapTypeControl: false,
         zoom: 17,
         streetViewControl: false,
+        styles: noPoi,
         center: { lat: x, lng: y }
       });
 
       const directionsService = new google.maps.DirectionsService();
-      const directionsRenderer = new google.maps.DirectionsRenderer();
-
+      const directionsRenderer = new google.maps.DirectionsRenderer(
+        {
+          suppressMarkers: true
+        }
+      );
       for (var i = 0; i < data.dustbin.length; i++) {
         var contentString = '<div id="container">' +
         '<div id="upperContainer">' +
@@ -59,12 +70,34 @@ function initMap() {
         // '<div id="lowerContainer">' +
         // '<iframe width="435" height="230" style="border: 0; margin-left:14%;" src=' + data[i].graphLink + '></iframe>'+
         // "</div>" +
+        '<form action="/pickup" method="POST">' +
+        '<input type="hidden" name="dustbinID" value=' + data.dustbin[i].dustbinID + '>' +
+        '<button type="submit">PICKUP</button>' +
+        '</form>' +
         "</div>" ;
       
       const infowindow = new google.maps.InfoWindow({
         content: contentString,
       });
-      
+      var lastDate = data.dustbin[i].lastPickup.split("T")[0];
+      [year, month, day] = lastDate.split("-");
+      lastDate = day+"/"+month+"/"+year;
+      var today = new Date();
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      var flag = false;
+      if(yyyy===year){
+        if(mm===month){
+          if(dd-day>2){
+            flag = true;
+          }
+        }else{
+          flag = true;
+        }
+      }else{
+        flag=true;
+      }
       if(data.dustbin[i].percentFill<=30){
         const marker = new google.maps.Marker({
           position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
@@ -74,7 +107,7 @@ function initMap() {
         marker.addListener("click", () => {
           infowindow.open(map, marker);
         });
-      }else if(data.dustbin[i].percentFill>30 && data.dustbin[i].percentFill<=60){
+      }else if((data.dustbin[i].percentFill>30 && data.dustbin[i].percentFill<=60)){
         const marker = new google.maps.Marker({
           position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
           map,

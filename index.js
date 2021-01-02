@@ -74,7 +74,7 @@ app.get("/mainframe", function(req, res){
 })
 
 app.get("/activeUserData", function(req, res){
-    console.log(driverInfoData.collection.collectionName);
+    
     driverInfoData.findOne({ driverID : activeUserID }, function(err, doc){
         if(err)
             console.log(err);
@@ -82,6 +82,11 @@ app.get("/activeUserData", function(req, res){
             res.send(doc);
         }
     });
+})
+
+app.get("/logout", function(req, res){
+    activeUserID = "";
+    res.redirect("/");
 })
 
 app.post("/", function(req, res){
@@ -101,6 +106,19 @@ app.post("/", function(req, res){
     });
 });
 
+app.post("/pickup", function(req, res){
+    console.log(req.body);
+    console.log(activeUserID);
+    function toISOStringLocal(d) {
+    function z(n){return (n<10?'0':'') + n}
+    return d.getFullYear() + '-' + z(d.getMonth()+1) + '-' +
+        z(d.getDate()) + 'T' + z(d.getHours()) + ':' +
+        z(d.getMinutes()) + ':' + z(d.getSeconds())
+    }
+    driverInfoData.updateOne( { "driverID" : activeUserID , 'dustbin.dustbinID' : req.body.dustbinID }, {'$set': {
+        'dustbin.$.lastPickup': toISOStringLocal(new Date())
+    }});
+})
 
 app.listen(3000, function(){
     console.log("Server is up and running");
