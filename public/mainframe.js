@@ -34,7 +34,7 @@ function makeRequest(url, callback) {
 
 var waypts = [];
 function initMap() {
-  let x = 40.709311, y = -73.921875;
+  let x = 23.6101808, y = 85.2799354;
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -72,14 +72,24 @@ function initMap() {
         styles: noPoi,
         center: { lat: x, lng: y }
       });
-
+      console.log(x);
+      console.log(y);
       const directionsService = new google.maps.DirectionsService();
       const directionsRenderer = new google.maps.DirectionsRenderer(
         {
           suppressMarkers: true
         }
       );
-
+      const start = new google.maps.Marker({
+        position: { lat: 23.6101808, lng: 85.2799354 },
+        map,
+        icon: "imgSrc/start.png",
+      });
+      const end = new google.maps.Marker({
+        position: { lat: 23.662902, lng: 85.314584 },
+        map,
+        icon: "imgSrc/flag.png",
+      });
       //listing all the dustbin data from the JSON recieved through XML
       for (var i = 0; i < data.dustbin.length; i++) {
         var contentString = '<div id="container">' +
@@ -159,8 +169,8 @@ function initMap() {
 
 function calculateAndDisplayRoute(directionsService, directionsRenderer) {            
   directionsService.route({
-      origin: { lat: 40.709311, lng: -73.920835},
-      destination: { lat: 40.702683, lng: -73.920834},
+      origin: { lat: 23.6101808, lng: 85.2799354},
+      destination: { lat: 23.662902, lng: 85.314584},
       optimizeWaypoints: true,
       waypoints: waypts,
       travelMode: google.maps.TravelMode.DRIVING,
