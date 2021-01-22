@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Green Mile</title>
-    <link rel="icon" href="design/Logo/favicon.png" type="image/x-icon"> 
-    <!-- Metalink -->
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- External Css -->
-    <link rel="stylesheet" type="text/css" href="landPage.css">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">   
-    <!-- Jquery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
-    
-</head>
+        <title>Green Mile</title>
+        <!-- Favicon -->
+        <link rel="icon" href="design/Logo/favicon.png" type="image/x-icon"> 
+        <!-- Metalink -->
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <!-- External Css -->
+        <link rel="stylesheet" type="text/css" href="landPage.css">
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">   
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>  
+        <!-- For icons  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
+    </head>
 
     <body>
-        <a id="button"></a>
         <!-- For the navbar at the top -->
         <div class="topnav">
             <img class="brandLogo" src="design\Logo\logo_transparent.png"/>
@@ -31,43 +31,39 @@
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
-
             <!-- Modal content -->
             <div class="modal-content">
-            
-            <div class="col-xs-7 rightCard">
-                    <img class="brandLogo" src="design\Logo\logo_transparent_green.png"/>
-                <div>
-                    <h1 class="rightCardHead">Sign in to Green Mile</h1>
-                    <form action="/" method="POST">
-                        <div class="formOuterBox">
-                            <label class="icon" for="userID"><i class="fas fa-user"></i></label>
-                            <input type="text" name="userID" class="formInnerBox" placeholder="User ID" required/>
-                        </div>
-                        <div class="formOuterBox">
-                            <label class="icon" for="email"><i class="fas fa-envelope"></i></label>
-                            <input type="text" name="email" class="formInnerBox" placeholder="Email" required/>
-                        </div>
-                        <div class="formOuterBox">
-                            <label class="icon" for="password"><i class="fas fa-unlock-alt"></i></label>
-                            <input type="password" name="password" class="formInnerBox" placeholder="Password" required/>
-                        </div>
-                        <button type="submit" class="rightCardButton">SIGN IN</button>
-                    </form>
-                    
+                <div class="col-xs-7 rightCard">
+                        <img class="brandLogo" src="design\Logo\logo_transparent_green.png"/>
+                    <div>
+                        <h1 class="rightCardHead">Sign in to Green Mile</h1>
+                        <form action="/" method="POST">
+                            <div class="formOuterBox">
+                                <label class="icon" for="userID"><i class="fas fa-user"></i></label>
+                                <input type="text" name="userID" class="formInnerBox" placeholder="User ID" required/>
+                            </div>
+                            <div class="formOuterBox">
+                                <label class="icon" for="email"><i class="fas fa-envelope"></i></label>
+                                <input type="text" name="email" class="formInnerBox" placeholder="Email" required/>
+                            </div>
+                            <div class="formOuterBox">
+                                <label class="icon" for="password"><i class="fas fa-unlock-alt"></i></label>
+                                <input type="password" name="password" class="formInnerBox" placeholder="Password" required/>
+                            </div>
+                            <button type="submit" class="rightCardButton">SIGN IN</button>
+                        </form> 
+                    </div>
+                </div>
+                <div class="col-xs-5 leftCard">
+                    <span class="close">&times;</span>
                 </div>
             </div>
-            <div class="col-xs-5 leftCard">
-                <span class="close">&times;</span>
-            </div>
-            </div>
-        
         </div>
 
         <!-- Background video heading -->
         <div class="videoHeader">
-        <h1>DELIVERING A SMART WAY TO MANAGE YOUR WASTE</h1>
-        <a href="map" target="_blank" class="mapButton">Map</a>
+            <h1>DELIVERING A SMART WAY TO MANAGE YOUR WASTE</h1>
+            <a href="map" target="_blank" class="mapButton">Map</a>
         </div>
 
         <!-- Background Video -->
@@ -82,7 +78,8 @@
                 <img class="module"src="imgSrc/garbage-men.png"/>
             </div>
             <div class="module firstContainerRight col-xs-5">
-                <p class="discription">With rapid increase in population, the issues
+                <p class="discription">
+                    With rapid increase in population, the issues
                     related to sanitation with respect to garbage management
                     are degrading immensely. It creates unhygienic
                     conditions for the citizens in the nearby surrounding,
@@ -107,7 +104,8 @@
                     waste management system, where the garbage is collected
                     from the streets, houses and other establishments on
                     quotidian basis, is not able to effectively manage the
-                    waste generated.</p>
+                    waste generated.
+                </p>
             </div>
         </div>
 
@@ -188,7 +186,5 @@
         </div>
         <!-- Javascript -->
     <script src="landPage.js"></script>
-    </body>
-    
-        
+    </body>  
 </html>

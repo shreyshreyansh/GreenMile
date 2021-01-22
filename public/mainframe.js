@@ -1,3 +1,20 @@
+
+//For loading animation
+document.onreadystatechange = function() { 
+  if (document.readyState !== "complete") { 
+      document.querySelector( 
+        "body").style.visibility = "hidden"; 
+      document.querySelector( 
+        "#loader").style.visibility = "visible"; 
+  } else { 
+      document.querySelector( 
+        "#loader").style.display = "none"; 
+      document.querySelector( 
+        "body").style.visibility = "visible"; 
+  } 
+};
+
+//making an XML request to the URL to get the JSON posted by index.js 
 function makeRequest(url, callback) {
   var request;
   if (window.XMLHttpRequest) {
@@ -17,7 +34,7 @@ function makeRequest(url, callback) {
 
 var waypts = [];
 function initMap() {
-  let x = 40.52, y = 34.34;
+  let x = 40.709311, y = -73.921875;
   var options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -33,6 +50,7 @@ function initMap() {
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
 
+    //getting the JSON by index.js
     makeRequest('/activeUserData', function(data) {
       var data = JSON.parse(data.responseText);
       console.log(data);
@@ -46,6 +64,7 @@ function initMap() {
             ]   
           }
         ];
+      //intializing the map with specified settings 
       const map = new google.maps.Map(document.getElementById("map"), {
         mapTypeControl: false,
         zoom: 17,
@@ -60,6 +79,8 @@ function initMap() {
           suppressMarkers: true
         }
       );
+
+      //listing all the dustbin data from the JSON recieved through XML
       for (var i = 0; i < data.dustbin.length; i++) {
         var contentString = '<div id="container">' +
         '<div id="upperContainer">' +
@@ -67,112 +88,89 @@ function initMap() {
         '<p class="dustbinInfo">Last Pickup : '+ data.dustbin[i].lastPickup.split("T")[0] + '</p>'+
         '<p class="dustbinInfo">Percentage Filled : '+ data.dustbin[i].percentFill + '%</p>'+
         "</div>" +
-        // '<div id="lowerContainer">' +
-        // '<iframe width="435" height="230" style="border: 0; margin-left:14%;" src=' + data[i].graphLink + '></iframe>'+
-        // "</div>" +
         '<form action="/pickup" method="POST">' +
         '<input type="hidden" name="dustbinID" value=' + data.dustbin[i].dustbinID + '>' +
         '<button type="submit">PICKUP</button>' +
         '</form>' +
         "</div>" ;
       
-      const infowindow = new google.maps.InfoWindow({
-        content: contentString,
-      });
-      var lastDate = data.dustbin[i].lastPickup.split("T")[0];
-      [year, month, day] = lastDate.split("-");
-      lastDate = day+"/"+month+"/"+year;
-      var today = new Date();
-      var dd = String(today.getDate()).padStart(2, '0');
-      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-      var yyyy = today.getFullYear();
-      var flag = false;
-      if(yyyy===year){
-        if(mm===month){
-          if(dd-day>2){
-            flag = true;
-          }
-        }else{
-          flag = true;
-        }
-      }else{
-        flag=true;
-      }
-      if(data.dustbin[i].percentFill<=30){
-        const marker = new google.maps.Marker({
-          position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
-          map,
-          icon: "imgSrc/green-trash.png",
-        });
-        marker.addListener("click", () => {
-          infowindow.open(map, marker);
-        });
-      }else if((data.dustbin[i].percentFill>30 && data.dustbin[i].percentFill<=60)){
-        const marker = new google.maps.Marker({
-          position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
-          map,
-          icon: "imgSrc/yellow-trash.png",
-        });
-        marker.addListener("click", () => {
-          infowindow.open(map, marker);
+        //creating infowindow for the google maps
+        const infowindow = new google.maps.InfoWindow({
+          content: contentString,
         });
         
-      }else{
-        const marker = new google.maps.Marker({
-          position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
-          map,
-          icon: "imgSrc/red-trash.png",
-        });
-        marker.addListener("click", () => {
-          infowindow.open(map, marker);
-        });
-        waypts.push({
-          location: new google.maps.LatLng(data.dustbin[i].lat, data.dustbin[i].lng),
-          stopover: true,
-        });
-        console.log(waypts);
-      }
+        //if less than 30% green, if between 30% to 60% yellow, if more than 60% red
+        if(data.dustbin[i].percentFill<=30){
+          //adding marker and infowindow
+          const marker = new google.maps.Marker({
+            position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
+            map,
+            icon: "imgSrc/green-trash.png",
+          });
+          marker.addListener("click", () => {
+            infowindow.open(map, marker);
+          });
+        }else if((data.dustbin[i].percentFill>30 && data.dustbin[i].percentFill<=60)){
+          //adding marker and infowindow
+          const marker = new google.maps.Marker({
+            position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
+            map,
+            icon: "imgSrc/yellow-trash.png",
+          });
+          marker.addListener("click", () => {
+            infowindow.open(map, marker);
+          });
+        }else{
+          //adding marker and infowindow
+          const marker = new google.maps.Marker({
+            position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
+            map,
+            icon: "imgSrc/red-trash.png",
+          });
+          marker.addListener("click", () => {
+            infowindow.open(map, marker);
+          });
+          //add the dustbin to the waypoint of the driver journey as it is more than
+          //60%.
+          waypts.push({
+            location: new google.maps.LatLng(data.dustbin[i].lat, data.dustbin[i].lng),
+            stopover: true,
+          });
+        }
       
     }
+    //render the map with specific instruction
     directionsRenderer.setMap(map);
-    calculateAndDisplayRoute(directionsService, directionsRenderer);
+
+    //Clicking the start button will start the journey
+    document.getElementById('jStart').addEventListener('click', function(){ 
+      document.getElementById('jStart').innerHTML = '<i class="fas fa-location-arrow"></i><span class="text">Start</span><span class="glyphicon glyphicon-refresh spinning"></span>';
+      //this function calculate the dirctions with the waypoints.
+      calculateAndDisplayRoute(directionsService, directionsRenderer);
     });
-    
+    }); 
   }
-      
   function error(err) {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
-  
+  //finds current position of the user and make it the map center
   navigator.geolocation.getCurrentPosition(success, error, options);     
-
 }
 
-function calculateAndDisplayRoute(directionsService, directionsRenderer) {        
-        
-    // const checkboxArray = document.getElementById("waypoints");
-    // console.log(document.getElementById("start").value);
-    // for (let i = 0; i < checkboxArray.length; i++) {
-    //   if (checkboxArray.options[i].selected) {
-    //     waypts.push({
-    //       location: checkboxArray[i].value,
-    //       stopover: true,
-    //     });
-    //   }
-    // }
-  directionsService.route(
-    {
-      origin: "Halifax, NS",
-      destination: "Vancouver, BC",
+function calculateAndDisplayRoute(directionsService, directionsRenderer) {            
+  directionsService.route({
+      origin: { lat: 40.709311, lng: -73.920835},
+      destination: { lat: 40.702683, lng: -73.920834},
       optimizeWaypoints: true,
       waypoints: waypts,
       travelMode: google.maps.TravelMode.DRIVING,
-    },
-    (response, status) => {
+    },(response, status) => {
       if (status === "OK") {
         directionsRenderer.setDirections(response);
-        console.log(response);
+        // console.log(response);
+        document.getElementById('jStart').classList.add('afterClick');
         const route = response.routes[0];
+        //display instructions about the journey.
         const summaryPanel = document.getElementById("directions-panel");
         for (let i = 0; i < route.legs[0].steps.length; i++) {
           summaryPanel.innerHTML +=
@@ -186,6 +184,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
           "</div>"+
           "</div>";
         }
+        document.getElementById('jStart').innerHTML = '<i class="fas fa-location-arrow"></i><span class="text">Start</span>';
       } else {
           window.alert("Directions request failed due to " + status);
       }

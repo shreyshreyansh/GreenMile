@@ -14,23 +14,23 @@
       return ((compareBottom <= viewBottom) && (compareTop >= viewTop));
   
     };
-  })(jQuery);
-  var win = $(window);
-  var allMods = $(".module");
+})(jQuery);
+var win = $(window);
+var allMods = $(".module");
+allMods.each(function(i, el) {
+  var el = $(el);
+  if (el.visible(true)) {
+    el.addClass("already-visible"); 
+  } 
+});
+win.scroll(function(event) {
   allMods.each(function(i, el) {
     var el = $(el);
     if (el.visible(true)) {
-      el.addClass("already-visible"); 
+      el.addClass("come-in"); 
     } 
   });
-  win.scroll(function(event) {
-    allMods.each(function(i, el) {
-      var el = $(el);
-      if (el.visible(true)) {
-        el.addClass("come-in"); 
-      } 
-    });
-  });
+});
 
 
 var btn = $('#button');

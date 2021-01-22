@@ -5,6 +5,29 @@ body {
   padding: 0;
   font-family: "Work Sans", sans-serif;
 }
+#loader {
+  border: 12px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 12px solid #2c7c64;
+  width: 70px;
+  height: 70px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
 #map {
   float: right;
   width: 100%;
@@ -56,6 +79,25 @@ body {
   margin-bottom: 5%;
   margin-top: 5.1%;
   font-size: 1.5rem;
+}
+
+.start {
+  background-color: #fff;
+  color: #2c7c64;
+  border: 0;
+  border-radius: 10px;
+  margin-top: 75%;
+  width: 100%;
+}
+
+.afterClick {
+  margin-top: 5%;
+}
+
+.text {
+  font-size: 2.5rem;
+  margin-left: 2%;
+  margin-right: 2%;
 }
 
 /* .brandHead {
@@ -169,4 +211,27 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.glyphicon.spinning {
+  animation: spin 1s infinite linear;
+  -webkit-animation: spin2 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: scale(1) rotate(0deg);
+  }
+  to {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin2 {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }

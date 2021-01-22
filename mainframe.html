@@ -13,10 +13,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
 <!-- Google Font -->
 <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">   
+<!-- For icons  -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">   
 </head>
 <body>
+    <div id="loader" class="center"></div> 
     <div id="left-panel" class="col-xs-4">
-        <h1 class="left-panel-head">Directions :</h1>
+        <button id="jStart" class="start"><i class="fas fa-location-arrow"></i><span class="text">Start</span></button>
+        <!-- <h1 class="left-panel-head">Directions :</h1> -->
         <div id="directions-panel"></div>
     </div>
 
@@ -45,7 +51,6 @@
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="mainframe.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=&v=weekly"></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&libraries=&v=weekly"></script> 
 </body>
 </html>
