@@ -172,10 +172,8 @@ function initMap() {
         '<p class="dustbinInfo">Dustbin Id : '+ data.dustbin[i]._dustbinID + '</p>'+
         '<p class="dustbinInfo">Percentage Filled : '+ data.dustbin[i].percentFilled + '%</p>'+
         "</div>" +
-        '<form action="/pickup" method="POST">' +
         '<input type="hidden" name="dustbinID" value=' + data.dustbin[i]._dustbinID + '>' +
-        '<button type="submit">PICKUP</button>' +
-        '</form>' +
+        '<button onClick="window.location.reload();" type="submit">PICKUP</button>' +
         "</div>" ;
       
         //creating infowindow for the google maps
@@ -228,7 +226,7 @@ function initMap() {
 
     //Clicking the start button will start the journey
     document.getElementById('jStart').addEventListener('click', function(){ 
-      document.getElementById('jStart').innerHTML = '<i class="fas fa-location-arrow"></i><span class="text">Start</span><span class="glyphicon glyphicon-refresh spinning"></span>';
+      document.getElementById('jStart').innerHTML = '<i class="fas fa-location-arrow"></i><span class="text">Calculating</span><span class="glyphicon glyphicon-refresh spinning"></span>';
       document.getElementById("directions-panel").innerHTML = "";
       //this function calculate the dirctions with the waypoints.
       calculateAndDisplayRoute(directionsService, directionsRenderer);
@@ -253,7 +251,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
       if (status === "OK") {
         directionsRenderer.setDirections(response);
         // console.log(response);
-        document.getElementById('jStart').classList.add('afterClick');
+        $('#jStart').animate({marginTop: "25px"});
         const route = response.routes[0];
         //display instructions about the journey.
         const summaryPanel = document.getElementById("directions-panel");
@@ -269,7 +267,7 @@ function calculateAndDisplayRoute(directionsService, directionsRenderer) {
           "</div>"+
           "</div>";
         }
-        document.getElementById('jStart').innerHTML = '<i class="fas fa-location-arrow"></i><span class="text">Start</span>';
+        document.getElementById('jStart').innerHTML = '<i class="fas fa-location-arrow"></i><span class="text">Re-Calculate</span>';
       } else {
           window.alert("Directions request failed due to " + status);
       }

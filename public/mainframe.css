@@ -88,10 +88,7 @@ body {
   border-radius: 10px;
   margin-top: 75%;
   width: 100%;
-}
-
-.afterClick {
-  margin-top: 5%;
+  outline: none;
 }
 
 .text {
