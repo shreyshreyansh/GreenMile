@@ -1,3 +1,18 @@
+//For loading animation
+document.onreadystatechange = function() { 
+  if (document.readyState !== "complete") { 
+      document.querySelector( 
+        "body").style.visibility = "hidden"; 
+      document.querySelector( 
+        "#loader").style.visibility = "visible"; 
+  } else { 
+      document.querySelector( 
+        "#loader").style.display = "none"; 
+      document.querySelector( 
+        "body").style.visibility = "visible"; 
+  } 
+};
+
 // Function for the slide-up animation
 (function($) {
     $.fn.visible = function(partial) {
@@ -73,3 +88,4 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+

@@ -27,6 +27,7 @@ const dustbinSchema = mongoose.Schema({
     lng : Number,
     lastPickup : Date,
     percentFilled : Number,
+    channelID : Number,
     graphLink : String
 });
 const dustbinData = mongoose.model("dustbin", dustbinSchema);
@@ -46,7 +47,7 @@ const driverInfoSchema = mongoose.Schema({
     phoneNo : Number,
     head : String,
     lisenceNo : Number,
-    dustbin : Array
+    dustbin : [dustbinSchema]
 });
 const driverInfoData = mongoose.model("driverInfo", driverInfoSchema);
 
@@ -89,6 +90,32 @@ app.get("/activeUserData", function(req, res){
     });
 })
 
+app.get("/change/:channelID/:field1", function(req, res){
+    const channel_id = req.params.channelID;
+    const field = req.params.field1;
+
+    dustbinData.updateOne({ channelID : channel_id }, {$set : { percentFilled : field } }, function(err, doc){
+        if(err)
+            console.log(err);
+        else{
+            res.send("1");
+        }
+    });
+    console.log(channel_id);
+    if(activeUserID!=='') {
+        driverInfoData.updateOne( {
+            'driverID' : activeUserID,
+            'dustbin.channelID': channel_id 
+          },
+          { $set: { "dustbin.$.percentFilled" : field } },
+        function(err, c){
+            if(err)
+            console.log(err);
+            else
+            console.log(c);
+        });
+        }
+});
 
 app.get("/logout", function(req, res){
     activeUserID = "";

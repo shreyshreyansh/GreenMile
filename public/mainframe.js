@@ -1,3 +1,64 @@
+function setSessionItem(name, value) {
+  var mySession;
+  try {
+      mySession = JSON.parse(localStorage.getItem('mySession'));
+  } catch (e) {
+      console.log(e);
+      mySession = {};
+  }
+
+  mySession[name] = value;
+
+  mySession = JSON.stringify(mySession);
+
+  localStorage.setItem('mySession', mySession);
+}
+
+function getSessionItem(name) {
+  var mySession = localStroage.getItem('mySession');
+  if (mySession) {
+      try {
+          mySession = JSON.stringify(mySession);
+          return mySession[name];
+      } catch (e) {
+          console.log(e);
+      }
+  }
+}
+
+function restoreSession(data) {
+  for (var x in data) {
+      //use saved data to set values as needed
+      console.log(x, data[x]);
+  }
+}
+
+
+
+window.addEventListener('load', function(e) {
+  var mySession = localStorage.getItem('mySession');
+  if (mySession) {
+      try {
+          mySession = JSON.parse(localStorage.getItem('mySession'));
+      } catch (e) {
+          console.log(e);
+          mySession = {};
+      }
+      restoreSession(mySession);
+  } else {
+      localStorage.setItem('mySession', '{}');
+  }
+
+  setSessionItem('foo', Date.now()); //should change each time
+
+  if (!mySession.bar) {
+      setSessionItem('bar', Date.now()); //should not change on refresh
+  }
+}, false);
+
+
+
+
 
 //For loading animation
 document.onreadystatechange = function() { 
@@ -54,6 +115,20 @@ function initMap() {
     makeRequest('/activeUserData', function(data) {
       var data = JSON.parse(data.responseText);
       console.log(data);
+      for (var j = 0; j < data.dustbin.length; j++) {
+        var url = "https://api.thingspeak.com/channels/"+data.dustbin[j].channelID+"/fields/1/last.json";
+        // console.log(data[j]._dustbinID);
+        
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, false);
+        xhttp.send();
+        var data1 = JSON.parse(xhttp.responseText);
+        var url1 = "/change/"+data.dustbin[j].channelID+"/"+data1.field1;
+        console.log(url1);
+        xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url1, false);
+        xhttp.send();
+      }
       document.getElementById("loginName").prepend(data.name);
       document.getElementById("loginImg").style.backgroundImage = "url(" + data.driverPhotoLink +")";
       var noPoi = [
@@ -81,7 +156,7 @@ function initMap() {
         }
       );
       const start = new google.maps.Marker({
-        position: { lat: 23.6101808, lng: 85.2799354 },
+        position: { lat: x, lng: y },
         map,
         icon: "imgSrc/start.png",
       });
@@ -94,12 +169,11 @@ function initMap() {
       for (var i = 0; i < data.dustbin.length; i++) {
         var contentString = '<div id="container">' +
         '<div id="upperContainer">' +
-        '<p class="dustbinInfo">Dustbin Id : '+ data.dustbin[i].dustbinID + '</p>'+
-        '<p class="dustbinInfo">Last Pickup : '+ data.dustbin[i].lastPickup.split("T")[0] + '</p>'+
-        '<p class="dustbinInfo">Percentage Filled : '+ data.dustbin[i].percentFill + '%</p>'+
+        '<p class="dustbinInfo">Dustbin Id : '+ data.dustbin[i]._dustbinID + '</p>'+
+        '<p class="dustbinInfo">Percentage Filled : '+ data.dustbin[i].percentFilled + '%</p>'+
         "</div>" +
         '<form action="/pickup" method="POST">' +
-        '<input type="hidden" name="dustbinID" value=' + data.dustbin[i].dustbinID + '>' +
+        '<input type="hidden" name="dustbinID" value=' + data.dustbin[i]._dustbinID + '>' +
         '<button type="submit">PICKUP</button>' +
         '</form>' +
         "</div>" ;
@@ -110,7 +184,7 @@ function initMap() {
         });
         
         //if less than 30% green, if between 30% to 60% yellow, if more than 60% red
-        if(data.dustbin[i].percentFill<=30){
+        if(data.dustbin[i].percentFilled<=30){
           //adding marker and infowindow
           const marker = new google.maps.Marker({
             position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
@@ -120,7 +194,7 @@ function initMap() {
           marker.addListener("click", () => {
             infowindow.open(map, marker);
           });
-        }else if((data.dustbin[i].percentFill>30 && data.dustbin[i].percentFill<=60)){
+        }else if((data.dustbin[i].percentFilled>30 && data.dustbin[i].percentFilled<=60)){
           //adding marker and infowindow
           const marker = new google.maps.Marker({
             position: { lat: data.dustbin[i].lat, lng: data.dustbin[i].lng},
@@ -155,6 +229,7 @@ function initMap() {
     //Clicking the start button will start the journey
     document.getElementById('jStart').addEventListener('click', function(){ 
       document.getElementById('jStart').innerHTML = '<i class="fas fa-location-arrow"></i><span class="text">Start</span><span class="glyphicon glyphicon-refresh spinning"></span>';
+      document.getElementById("directions-panel").innerHTML = "";
       //this function calculate the dirctions with the waypoints.
       calculateAndDisplayRoute(directionsService, directionsRenderer);
     });

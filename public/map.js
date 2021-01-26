@@ -1,3 +1,19 @@
+//For loading animation
+document.onreadystatechange = function() { 
+  if (document.readyState !== "complete") { 
+      document.querySelector( 
+        "body").style.visibility = "hidden"; 
+      document.querySelector( 
+        "#loader").style.visibility = "visible"; 
+  } else { 
+      document.querySelector( 
+        "#loader").style.display = "none"; 
+      document.querySelector( 
+        "body").style.visibility = "visible"; 
+  } 
+};
+
+
 function makeRequest(url, callback) {
   var request;
   if (window.XMLHttpRequest) {
@@ -46,12 +62,25 @@ function initMap() {
         zoom: 17,
         streetViewControl: false,
         styles: noPoi,
-        center: { lat: 40.709311, lng: -73.921875 }
+        center: { lat: x, lng: y }
       });
   
       makeRequest('/data', function(data) {
-         var data = JSON.parse(data.responseText);
-        
+        var data = JSON.parse(data.responseText); 
+        if(data){
+        for (var j = 0; j < data.length; j++) {
+          var url = "https://api.thingspeak.com/channels/"+data[j].channelID+"/fields/1/last.json";
+          console.log(data[j]._dustbinID);
+          var xhttp = new XMLHttpRequest();
+          xhttp.open("GET", url, false);
+          xhttp.send();
+          var data1 = JSON.parse(xhttp.responseText);
+          var url1 = "/change/"+data[j].channelID+"/"+data1.field1;
+          xhttp = new XMLHttpRequest();
+          xhttp.open("GET", url1, false);
+          xhttp.send();
+        }
+        }
         for (var i = 0; i < data.length; i++) {
           var contentString = '<div id="container">' +
           '<div id="upperContainer">' +
