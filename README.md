@@ -73,14 +73,11 @@ Green Mile is a smart system which monitors fill level of dustbin using IoT sens
 Various GIF of the website.
 
 - Landing Page
-![](https://i.ibb.co/MVTpgKg/landPage.gif)
-<img src="https://i.ibb.co/MVTpgKg/landPage.gif"/>
+  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/landPage.gif)
+- Map Page
+  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/map.gif)
+- Mainframe Page
+  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/mainFrameG.gif)
 
-Each branch represents a certain tutorial.
-- tut1-starter: [Creating a Single Page Todo App with Node and Angular](https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular)
-- tut2-organization: [Application Organization and Structure](https://scotch.io/tutorials/node-and-angular-to-do-app-application-organization-and-structure)
-- tut3-services: [Controllers and Services](https://scotch.io/tutorials/node-and-angular-to-do-app-controllers-and-services)
 
-Happy Todo-ing!
-
-![Todo-aholic](https://img.icons8.com/color/100/000000/mongodb.png)
+Good Luck!
