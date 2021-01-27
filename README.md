@@ -62,7 +62,7 @@ Green Mile is a smart system which monitors fill level of dustbin using IoT sens
      - <img src="https://i.ibb.co/wKvwS2p/Screenshot-2021-01-27-141935.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png"/>
 6. Configuring the IoT device:
    - Circuit image:
-     -
+     - <img src="https://i.ibb.co/kVLRMyL/Screenshot-2021-01-27-163417.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png"/>
 7. Clone the repository: `git@github.com:shreyshreyansh/GreenMile.git`
 8. Open the repository in VS code.
 9. Install the application: `npm install` in hyper. 
