@@ -1,4 +1,4 @@
-# GreenMile
+# GreenMile <img src="https://i.ibb.co/9T9y67S/logo-transparent.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="40" height="40" /> 
 Green Mile is a smart system which monitors fill level of dustbin using IoT sensors and gives an optimized route to garbage truck drivers passing through all the dustbins with 60% or above fill level and the dustbin which hasn't been picked since 3 days using Google Maps Apis.
 
 ## Requirements
