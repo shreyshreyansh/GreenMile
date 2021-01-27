@@ -69,9 +69,12 @@ Green Mile is a smart system which monitors fill level of dustbin using IoT sens
 10. Start the server: `node index.js`
 11. View in browser at `http://localhost:3000`
 
-## Tutorial Series
+## WEBSITE
+Various GIF of the website.
 
-This repo corresponds to the Node Todo Tutorial Series on [scotch.io](http://scotch.io)
+- Landing Page
+![](https://i.ibb.co/MVTpgKg/landPage.gif)
+<img src="https://i.ibb.co/MVTpgKg/landPage.gif"/>
 
 Each branch represents a certain tutorial.
 - tut1-starter: [Creating a Single Page Todo App with Node and Angular](https://scotch.io/tutorials/creating-a-single-page-todo-app-with-node-and-angular)
