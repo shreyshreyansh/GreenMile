@@ -1,6 +1,16 @@
 # GreenMile <img src="https://i.ibb.co/9T9y67S/logo-transparent.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="40" height="40" /> 
 Green Mile is a smart system which monitors fill level of dustbin using IoT sensors and gives an optimized route to garbage truck drivers passing through all the dustbins with 60% or above fill level and the dustbin which hasn't been picked since 3 days using Google Maps Apis.
 
+## WEBSITE
+Various GIF of the website.
+
+- Landing Page
+  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/landPage.gif)
+- Map Page
+  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/map.gif)
+- Mainframe Page
+  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/mainFrameG.gif)
+
 ## Requirements
 
 - <img src="https://img.icons8.com/color/48/000000/nodejs.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png" width="25" height="25" />   [Node and npm](http://nodejs.org)
@@ -78,16 +88,5 @@ Green Mile is a smart system which monitors fill level of dustbin using IoT sens
 10. Install the application: `npm install` in hyper. 
 11. Start the server: `node index.js`
 12. View in browser at `http://localhost:3000`
-
-## WEBSITE
-Various GIF of the website.
-
-- Landing Page
-  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/landPage.gif)
-- Map Page
-  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/map.gif)
-- Mainframe Page
-  - ![](https://github.com/shreyshreyansh/GreenMile/blob/master/mainFrameG.gif)
-
 
 Good Luck!
