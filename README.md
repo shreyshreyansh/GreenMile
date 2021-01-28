@@ -61,6 +61,12 @@ Green Mile is a smart system which monitors fill level of dustbin using IoT sens
    - dustbins
      - <img src="https://i.ibb.co/wKvwS2p/Screenshot-2021-01-27-141935.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png"/>
 6. Configuring the IoT device:
+   - Things Required:
+      - [ESP8266](https://www.amazon.in/Lolin-NodeMCU-ESP8266-CP2102-Wireless/dp/B010O1G1ES/ref=sxts_sxwds-bia-wc-nc-drs1_0?cv_ct_cx=ESP8266+WiFi+Module&dchild=1&keywords=ESP8266+WiFi+Module&pd_rd_i=B010O1G1ES&pd_rd_r=904933b1-0ea6-4431-82e4-f5c96b2d4ef1&pd_rd_w=UPHTD&pd_rd_wg=CiApK&pf_rd_p=4856a1b6-75e2-4f99-bb59-edf3db6a4f74&pf_rd_r=H8B6CSPWN9X8EW85MQ4R&psc=1&qid=1611814473&sr=1-1-606822b7-04c2-4c74-a611-acbe80e94641)
+      - [Ultrasonic Sensor](https://www.amazon.in/Ultrasonic-Sensor-Module-HC-SR-04-Robokart/dp/B00ZNB01HI)
+      - [1 ohm resistors](https://www.amazon.in/REES52-Value-Resistor-Kit-ohm/dp/B07KS83TX6)
+      - [Breadboard](https://www.amazon.in/REES52-400-Point-Solderless-Breadboard/dp/B01IN0QGP6/ref=pd_all_pref_1?pd_rd_w=uKp77&pf_rd_p=c10d0b9c-438d-4711-90c0-57b4b7f6b336&pf_rd_r=1V6C5WX8SYVXE27Z92ZJ&pd_rd_r=97046aef-7fec-402d-a709-ed8ec942f79c&pd_rd_wg=x92rQ&pd_rd_i=B01IN0QGP6&psc=1)
+      - [Jumper wires](https://www.amazon.in/Electrobot-Jumper-Wires-120-Pieces/dp/B071VQLQQQ/ref=sr_1_6?dchild=1&keywords=wires&qid=1611814687&sr=8-6)
    - Circuit image:
      - <img src="https://i.ibb.co/kVLRMyL/Screenshot-2021-01-27-163417.png" alt="" data-canonical-src="https://gyazo.com/eb5c5741b6a9a16c692170a41a49c858.png"/>
 7. SetUp Google Billing A/C in google cloud console and setup your project in it to get the API related to `Direction API` and `Maps JavaScript API`.
