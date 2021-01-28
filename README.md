@@ -66,6 +66,7 @@ Green Mile is a smart system which monitors fill level of dustbin using IoT sens
 7. SetUp Google Billing A/C in google cloud console and setup your project in it to get the API related to `Direction API` and `Maps JavaScript API`.
 8. Setup a [Thingspeak](https://thingspeak.com/login?skipSSOCheck=true) IoT Cloud account.
    - Go to Channel and create a new channel
+   - Make the channel public and note the write API command so that you can use in the 
 8. Clone the repository: `git@github.com:shreyshreyansh/GreenMile.git`
 9. Open the repository in VS code.
 10. Install the application: `npm install` in hyper. 
